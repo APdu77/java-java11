@@ -2,6 +2,8 @@ package java8.ex02;
 
 import java.util.List;
 
+import javax.lang.model.element.NestingKind;
+
 import org.junit.Test;
 
 import java8.data.Data;
@@ -19,6 +21,11 @@ public class Method_02_Test {
         // TODO créer une méthode String format()
         // TODO la méthode retourne une chaîne de la forme [<nb_personnes> persons]
         // TODO exemple de résultat : "[14 persons]", "[30 persons]"
+
+        public default String format()	{
+        	String str = "["+String.valueOf(findAll().size())+" persons]";
+        	return str;
+        }
     }
     // end::IDao[]
 
@@ -36,6 +43,14 @@ public class Method_02_Test {
         // TODO la méthode retourne une chaîne de la forme DaoA[<nb_personnes> persons]
         // TODO exemple de résultat : "DaoA[14 persons]", "DaoA[30 persons]"
         // TODO l'implémentation réutilise la méthode format() de l'interface
+        
+        @Override
+        public String format()	{
+        	//super pour la classe-mere / Interface.super pour une interface
+        	String str = "DaoA"+IDao.super.format();
+        	return str;
+        }
+        
 
     }
     // end::DaoA[]
@@ -47,7 +62,7 @@ public class Method_02_Test {
 
         // TODO invoquer la méthode format() pour que le test soit passant
         String result = null;
-
+        result = daoA.format();
         assert "DaoA[20 persons]".equals(result);
     }
 }

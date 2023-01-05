@@ -19,6 +19,15 @@ public class Method_01_Test {
 
         // TODO créer une méthode int sumAge()
         // TODO Cette méthode retourne le résultat de l'addition des ages des personnes
+        
+        //default car une methode static ne peut utiliser que d'autres methodes "static"
+        public default int sumAge()	{
+        	int ageSum = 0;
+        	for (int i=0;i<findAll().size();i++) {
+        		ageSum += findAll().get(i).getAge();
+        	}
+        	return ageSum;
+        }
     }
     // end::IDao[]
 
@@ -49,7 +58,7 @@ public class Method_01_Test {
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
         int result = 0;
-
+        result = daoA.sumAge();
         assert result == 210;
     }
 
@@ -60,7 +69,7 @@ public class Method_01_Test {
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
         int result = 0;
-
+        result = daoB.sumAge();
         assert result == 5050;
 
     }
