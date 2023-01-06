@@ -28,6 +28,16 @@ public class Method_01_Test {
         	}
         	return ageSum;
         }
+        
+        public default int sumAge2()	{
+        	int ageSum = 0;
+            List<Person> persons = findAll();
+        	for (Person p: persons) {
+        		ageSum += p.getAge();
+        	}
+        	return ageSum;
+        }
+        
     }
     // end::IDao[]
 
