@@ -24,6 +24,7 @@ public class Method_02_Test {
 
         public default String format()	{
         	String str = "["+String.valueOf(findAll().size())+" persons]";
+            String str2 = "["+String.findAll().size()+" persons]";
         	return str;
         }
     }
@@ -48,6 +49,8 @@ public class Method_02_Test {
         public String format()	{
         	//super pour la classe-mere / Interface.super pour une interface
         	String str = "DaoA"+IDao.super.format();
+            String str2 = this.getClass().getSimpleName()+IDao.super.format();
+            String str3 = getClass().getSimpleName()+IDao.super.format();
         	return str;
         }
         
